@@ -1,0 +1,90 @@
+.ticket-card {
+    width: 502px;
+    height: 184px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.container {
+    margin: 26px 20px;
+    padding-top: 20px;
+}
+
+.ticket-card__header, .ticket-card__route, .ticket-card__route-back {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ticket-card__route, .ticket-card__route-back {
+    margin-top: 15px;
+}
+
+.ticket-card__header-cost {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 24px;
+    color: #2196F3;
+}
+
+.ticket-card__route-destination, .ticket-card__route-back-destination,
+.ticket-card__route-time, .ticket-card__route-back-time,
+.ticket-card__route-count-transfers, .ticket-card__route-back-count-transfers {
+    display: flex;
+    flex-direction: column;
+}
+
+.ticket-card__route-destination-name, .ticket-card__route-time-name, .ticket-card__route-count-transfers-name,
+.ticket-card__route-back-destination-name, .ticket-card__route-back-time-name, .ticket-card__route-back-count-transfers-name {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #A0B0B9;
+}
+
+.ticket-card__route-destination-value, .ticket-card__route-time-value, .ticket-card__route-count-transfers-value,
+.ticket-card__route-back-destination-value, .ticket-card__route-back-time-value, .ticket-card__route-back-count-transfers-value {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: #4A4A4A;
+}
+
+.ticket-card__route-count-transfers, .ticket-card__route-back-count-transfers {
+   width: 130px;
+}
+
+@media (min-width: 320px) and (max-width: 700px) {
+    .ticket-card {
+        width: 305px;
+    }
+
+    .ticket-card__header-cost {
+        font-size: 20px;
+        line-height: 20px;
+    }
+
+    .ticket-card__route-destination-name, .ticket-card__route-time-name, .ticket-card__route-count-transfers-name,
+    .ticket-card__route-back-destination-name, .ticket-card__route-back-time-name, .ticket-card__route-back-count-transfers-name {
+        font-size: 10px;
+        line-height: 14px;
+    }
+
+    .ticket-card__route-count-transfers, .ticket-card__route-back-count-transfers {
+        width: 100px;
+    }
+
+    .ticket-card__route-destination-value, .ticket-card__route-time-value, .ticket-card__route-count-transfers-value,
+    .ticket-card__route-back-destination-value, .ticket-card__route-back-time-value, .ticket-card__route-back-count-transfers-value {
+        font-size: 12px;
+        line-height: 18px;
+    }
+}
