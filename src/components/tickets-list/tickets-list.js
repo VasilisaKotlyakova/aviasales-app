@@ -42,7 +42,7 @@ function TicketsList() {
         return tickets.sort(sortByDuration);
       case sortType === 'optimal':
         return tickets.sort(sortByOptimal);
-      default:
+      default: return tickets;
     }
   }
   const useTickets = () =>
@@ -59,7 +59,7 @@ function TicketsList() {
     isEmpty = showTickets.length === 0 ? true : false;
   }
 
-  if (!!showTickets && !isEmpty) {
+  if(!!showTickets && !isEmpty) {
     const list = showTickets
       .slice(0, countTickets)
       .map((ticket) => <Ticket key={uuidv4()} cost={ticket.price} carrier={ticket.carrier} segments={ticket.segments} />);

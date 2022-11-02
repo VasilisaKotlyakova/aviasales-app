@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Progress } from 'antd';
 
 import './app.css';
-import Logo from '../../img/Logo.svg';
+import Logo from '../../assets/img/Logo.svg';
 import TicketList from '../tickets-list';
 import Filters from '../filters';
 import SortButtons from '../sort-buttons';
@@ -16,14 +16,14 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchSearchId());
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     dispatch(fetchTickets(searchId));
   }, [searchId, stop]);
 
   const ticketsNow = useSelector((state) => state.tickets.ticketList);
-  const ticketPercent = Math.floor((ticketsNow.length / 9700) * 100);
+  const ticketPercent = stop ? 100 : Math.floor((ticketsNow.length / 9700) * 100);
 
   let progress;
   if (ticketPercent < 100) {

@@ -1,7 +1,7 @@
 /* eslint-disable */
 export const fetchSearchId = () => {
   return function (dispatch) {
-    fetch(`https://aviasales-test-api.kata.academy/search`)
+    fetch(`https://front-test.dev.aviasales.ru/search`)
       .then((res) => res.json())
       .then((json) => dispatch({ type: 'SEND_KEY_API', payload: json.searchId }))
       .catch((err) => new Error(err));
@@ -9,31 +9,33 @@ export const fetchSearchId = () => {
 };
 
 export const fetchTickets = (searchId) => {
-  let stop = false;
-  return function (dispatch) {
+  const stop = false;
+  return async (dispatch) => {
     if (typeof searchId === 'string' && !stop) {
+      // eslint-disable-next-line no-inner-declarations
       async function searchTickets() {
-        fetch(`https://aviasales-test-api.kata.academy/tickets?searchId=${searchId}`)
+        fetch(`https://front-test.dev.aviasales.ru/tickets?searchId=${searchId}`)
           .then((res) => {
             if (res.status === 500) {
               searchTickets();
-              throw Error('Cтатус запроса 500');
+              throw Error('Упс, статус запроса 500, похоже на какую-то ошибку');
             } else {
               return res.json();
             }
           })
-          .then((json) => {
-            stop = json.stop;
-            dispatch({ type: 'SEND_TICKETS', payload: json });
-            if (stop) {
-              return dispatch({
+          .then((tikets) => {
+            dispatch({ type: 'SEND_TICKETS', payload: tikets });
+            if (tikets.stop) {
+              dispatch({
                 type: 'SEND_TICKETS',
-                payload: json,
+                payload: tikets,
               });
             }
             searchTickets();
           })
-          .catch((err) => new Error(err));
+          .catch((e) => {
+            console.log(e, 'Ошибка');
+          });
       }
       searchTickets();
     }
