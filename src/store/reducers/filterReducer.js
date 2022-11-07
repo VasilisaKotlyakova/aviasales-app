@@ -1,4 +1,6 @@
 /* eslint-disable */
+import { FILTERS_TICKETS, FILTERS_TICKETS_ALL } from '../action';
+
 const initialState = {
   filters: [
     { title: 'Без пересадок', stopCount: 0, isChecked: true },
@@ -10,10 +12,10 @@ const initialState = {
 
 const filterReducer = (state= initialState, action) => {
   switch(action.type) {
-  case 'FILTERS_TICKETS':
+  case FILTERS_TICKETS:
     return {filters: state.filters.map((item) =>
         item.stopCount === action.payload ? { ...item, isChecked: !item.isChecked } : item)};
-  case 'FILTERS_TICKETS_ALL':
+  case FILTERS_TICKETS_ALL:
     const newFilter = state.filters;
     return {
       filters: newFilter.map((item) => ({
@@ -26,3 +28,11 @@ const filterReducer = (state= initialState, action) => {
 };
 
 export default filterReducer;
+
+export const actionFilterTickets = (payload) => {
+ return { type: FILTERS_TICKETS, payload}
+}
+
+export const actionFilterTicketsAll = (payload) => {
+  return { type: FILTERS_TICKETS_ALL, payload}
+}

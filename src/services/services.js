@@ -1,9 +1,12 @@
 /* eslint-disable */
+import {actionKeyApi, actionSendTickets} from '../store/reducers/ticketReducer';
+
+const baseUrl = 'https://front-test.dev.aviasales.ru/';
 export const fetchSearchId = () => {
   return function (dispatch) {
-    fetch(`https://front-test.dev.aviasales.ru/search`)
+    fetch(`${baseUrl}search`)
       .then((res) => res.json())
-      .then((json) => dispatch({ type: 'SEND_KEY_API', payload: json.searchId }))
+      .then((json) => dispatch(actionKeyApi(json.searchId )))
       .catch((err) => new Error(err));
   };
 };
@@ -14,7 +17,7 @@ export const fetchTickets = (searchId) => {
     if (typeof searchId === 'string' && !stop) {
       // eslint-disable-next-line no-inner-declarations
       async function searchTickets() {
-        fetch(`https://front-test.dev.aviasales.ru/tickets?searchId=${searchId}`)
+        fetch(`${baseUrl}tickets?searchId=${searchId}`)
           .then((res) => {
             if (res.status === 500) {
               searchTickets();
@@ -24,12 +27,9 @@ export const fetchTickets = (searchId) => {
             }
           })
           .then((tikets) => {
-            dispatch({ type: 'SEND_TICKETS', payload: tikets });
+            dispatch(actionSendTickets(tikets));
             if (tikets.stop) {
-              dispatch({
-                type: 'SEND_TICKETS',
-                payload: tikets,
-              });
+              dispatch(actionSendTickets(tikets));
             }
             searchTickets();
           })

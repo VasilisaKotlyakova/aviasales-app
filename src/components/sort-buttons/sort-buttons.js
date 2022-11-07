@@ -1,6 +1,9 @@
+/* eslint-disable */
 import React from 'react';
 import './sort-buttons.css';
 import { useDispatch, useSelector } from 'react-redux';
+
+import { actionSortTickets } from '../../store/reducers/sortReducer';
 
 function SortButtons() {
   const dispatch = useDispatch();
@@ -10,21 +13,21 @@ function SortButtons() {
       <button
         type="button"
         className={sortType === 'cheap' ? 'sort-button__cheap checked' : 'sort-button__cheap'}
-        onClick={() => dispatch({ type: 'SORT_TICKETS', payload: 'cheap' })}
+        onClick={() => dispatch(actionSortTickets('cheap'))}
       >
         Самый дешевый
       </button>
       <button
         type="button"
         className={sortType === 'fast' ? 'sort-button__fast checked' : 'sort-button__fast'}
-        onClick={() => dispatch({ type: 'SORT_TICKETS', payload: 'fast' })}
+        onClick={() => dispatch(actionSortTickets('fast'))}
       >
         Самый быстрый
       </button>
       <button
         type="button"
         className={sortType === 'optimal' ? 'sort-button__optimal checked' : 'sort-button__optimal'}
-        onClick={() => dispatch({ type: 'SORT_TICKETS', payload: 'optimal' })}
+        onClick={() => dispatch(actionSortTickets('optimal'))}
       >
         Оптимальный
       </button>

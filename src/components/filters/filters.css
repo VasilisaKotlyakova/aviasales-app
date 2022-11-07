@@ -43,6 +43,7 @@ label {
 
 input {
     opacity: 0;
+    cursor: pointer;
 }
 
 .filters__label-name::before {
@@ -53,8 +54,10 @@ input {
 .custom-checkbox>span {
     display: inline-flex;
     align-items: center;
+    cursor: pointer;
 }
 
-.custom-checkbox>input:checked + .filters__label-name::before {
+.custom-checkbox>input:checked + .filters__label-name::before,
+.custom-checkbox>input:hover + .filters__label-name::before {
     content: url("../../assets/img/Checkbox_checked.png");
 }

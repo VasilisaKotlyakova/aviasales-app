@@ -5,6 +5,7 @@
     background: #2196F3;
     border-radius: 5px;
     color: white;
+    cursor: pointer;
 }
 
 @media (min-width: 320px) and (max-width: 700px) {
