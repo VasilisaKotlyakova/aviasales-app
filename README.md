@@ -1,6 +1,6 @@
 # Project link
 
-https://aviasales-app-fawn.vercel.app/
+https://aviasales-app-vasilisakotlyakova.vercel.app/
 
 # Getting Started with Create React App
 
